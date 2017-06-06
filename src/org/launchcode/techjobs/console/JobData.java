@@ -136,7 +136,7 @@ public class JobData {
         for (HashMap<String, String> nextJob : someJobs) {
             boolean duplicate = false;
             for(String searchItem : nextJob.keySet()) {
-                if ((nextJob.get(searchItem)).contains(searchTerm) && duplicate == false) {
+                if ((nextJob.get(searchItem).toLowerCase()).contains(searchTerm.toLowerCase()) && duplicate == false) {
                     jobs.add(nextJob);
                     duplicate = true;
                 }
