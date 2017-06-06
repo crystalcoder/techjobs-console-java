@@ -10,6 +10,7 @@ import java.io.Reader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by LaunchCode
@@ -125,4 +126,24 @@ public class JobData {
         }
     }
 
+    public static ArrayList<HashMap<String,String>> findByValue(HashMap<String, String> columnChoices, String searchTerm) {
+        // load data, if not already loaded
+        loadData();
+
+        ArrayList<HashMap<String, String>> someJobs = findAll();
+
+        ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
+        for (HashMap<String, String> nextJob : someJobs) {
+            boolean duplicate = false;
+            for(String searchItem : nextJob.keySet()) {
+                if ((nextJob.get(searchItem)).contains(searchTerm) && duplicate == false) {
+                    jobs.add(nextJob);
+                    duplicate = true;
+                }
+            }
+        }
+
+        return  jobs;
+
+    }
 }
